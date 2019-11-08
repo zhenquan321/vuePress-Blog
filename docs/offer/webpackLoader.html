@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack loader实现 | 忙 · 南易</title>
+    <meta name="description" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png">
+  <link rel="icon" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+    
+    <link rel="preload" href="/assets/css/0.styles.8d6b1986.css" as="style"><link rel="preload" href="/assets/js/app.32a39265.js" as="script"><link rel="preload" href="/assets/js/4.91c97ad6.js" as="script"><link rel="preload" href="/assets/js/125.758d01f4.js" as="script"><link rel="prefetch" href="/assets/js/10.a9a0b542.js"><link rel="prefetch" href="/assets/js/100.4ddc6f95.js"><link rel="prefetch" href="/assets/js/101.baf8d864.js"><link rel="prefetch" href="/assets/js/102.d6bdd45e.js"><link rel="prefetch" href="/assets/js/103.7a4765c7.js"><link rel="prefetch" href="/assets/js/104.0076f34d.js"><link rel="prefetch" href="/assets/js/105.37ea1584.js"><link rel="prefetch" href="/assets/js/106.6937d385.js"><link rel="prefetch" href="/assets/js/107.e27bb9ec.js"><link rel="prefetch" href="/assets/js/108.a38f5598.js"><link rel="prefetch" href="/assets/js/109.4760b837.js"><link rel="prefetch" href="/assets/js/11.e16d36f1.js"><link rel="prefetch" href="/assets/js/110.af95c8d6.js"><link rel="prefetch" href="/assets/js/111.1d2309e8.js"><link rel="prefetch" href="/assets/js/112.fd026dc2.js"><link rel="prefetch" href="/assets/js/113.7acf6ac5.js"><link rel="prefetch" href="/assets/js/114.f33b8b58.js"><link rel="prefetch" href="/assets/js/115.6b515cb3.js"><link rel="prefetch" href="/assets/js/116.61a9a68f.js"><link rel="prefetch" href="/assets/js/117.72716890.js"><link rel="prefetch" href="/assets/js/118.dd159b7e.js"><link rel="prefetch" href="/assets/js/119.35328686.js"><link rel="prefetch" href="/assets/js/12.59548c07.js"><link rel="prefetch" href="/assets/js/120.bd03d0bc.js"><link rel="prefetch" href="/assets/js/121.830ba600.js"><link rel="prefetch" href="/assets/js/122.25d68c9d.js"><link rel="prefetch" href="/assets/js/123.588e9383.js"><link rel="prefetch" href="/assets/js/124.7b280988.js"><link rel="prefetch" href="/assets/js/126.dd7d253d.js"><link rel="prefetch" href="/assets/js/127.fba1c422.js"><link rel="prefetch" href="/assets/js/128.2d779137.js"><link rel="prefetch" href="/assets/js/129.a93548b0.js"><link rel="prefetch" href="/assets/js/13.530976fd.js"><link rel="prefetch" href="/assets/js/130.5c9234b3.js"><link rel="prefetch" href="/assets/js/14.23bb919b.js"><link rel="prefetch" href="/assets/js/15.1b5a86dd.js"><link rel="prefetch" href="/assets/js/16.7886a4de.js"><link rel="prefetch" href="/assets/js/17.d26c28db.js"><link rel="prefetch" href="/assets/js/18.9b867385.js"><link rel="prefetch" href="/assets/js/19.04ee18af.js"><link rel="prefetch" href="/assets/js/20.681970be.js"><link rel="prefetch" href="/assets/js/21.a60874f4.js"><link rel="prefetch" href="/assets/js/22.b5a61d0c.js"><link rel="prefetch" href="/assets/js/23.1b2dff34.js"><link rel="prefetch" href="/assets/js/24.16bb6ea0.js"><link rel="prefetch" href="/assets/js/25.193a1f30.js"><link rel="prefetch" href="/assets/js/26.7df041d6.js"><link rel="prefetch" href="/assets/js/27.e3082df1.js"><link rel="prefetch" href="/assets/js/28.32a19b47.js"><link rel="prefetch" href="/assets/js/29.072b210d.js"><link rel="prefetch" href="/assets/js/3.ecb205c8.js"><link rel="prefetch" href="/assets/js/30.28457682.js"><link rel="prefetch" href="/assets/js/31.df0fb764.js"><link rel="prefetch" href="/assets/js/32.4f4768b0.js"><link rel="prefetch" href="/assets/js/33.4909261f.js"><link rel="prefetch" href="/assets/js/34.673189e3.js"><link rel="prefetch" href="/assets/js/35.7f64b13c.js"><link rel="prefetch" href="/assets/js/36.ad673f09.js"><link rel="prefetch" href="/assets/js/37.892588e5.js"><link rel="prefetch" href="/assets/js/38.8b85c87a.js"><link rel="prefetch" href="/assets/js/39.7121cd98.js"><link rel="prefetch" href="/assets/js/40.a7251bda.js"><link rel="prefetch" href="/assets/js/41.92faa07b.js"><link rel="prefetch" href="/assets/js/42.6ae7b63d.js"><link rel="prefetch" href="/assets/js/43.2fd6359d.js"><link rel="prefetch" href="/assets/js/44.622f0d9d.js"><link rel="prefetch" href="/assets/js/45.72b3049d.js"><link rel="prefetch" href="/assets/js/46.a4ece7ee.js"><link rel="prefetch" href="/assets/js/47.582a063e.js"><link rel="prefetch" href="/assets/js/48.b299c19c.js"><link rel="prefetch" href="/assets/js/49.a3406d02.js"><link rel="prefetch" href="/assets/js/5.dba0af1a.js"><link rel="prefetch" href="/assets/js/50.ade65618.js"><link rel="prefetch" href="/assets/js/51.ecbe82a4.js"><link rel="prefetch" href="/assets/js/52.2a11cc4f.js"><link rel="prefetch" href="/assets/js/53.0f9a3c8c.js"><link rel="prefetch" href="/assets/js/54.ccf1eea1.js"><link rel="prefetch" href="/assets/js/55.23dda6eb.js"><link rel="prefetch" href="/assets/js/56.48a100a1.js"><link rel="prefetch" href="/assets/js/57.f2ec7dd6.js"><link rel="prefetch" href="/assets/js/58.f1acca4e.js"><link rel="prefetch" href="/assets/js/59.e651b8f0.js"><link rel="prefetch" href="/assets/js/6.2948d63f.js"><link rel="prefetch" href="/assets/js/60.dd1d38a8.js"><link rel="prefetch" href="/assets/js/61.8b688ff7.js"><link rel="prefetch" href="/assets/js/62.a0b6af2d.js"><link rel="prefetch" href="/assets/js/63.806332d5.js"><link rel="prefetch" href="/assets/js/64.cb011209.js"><link rel="prefetch" href="/assets/js/65.edc0eb99.js"><link rel="prefetch" href="/assets/js/66.4e3ec164.js"><link rel="prefetch" href="/assets/js/67.150253e0.js"><link rel="prefetch" href="/assets/js/68.b3c8cf17.js"><link rel="prefetch" href="/assets/js/69.781892ed.js"><link rel="prefetch" href="/assets/js/7.c94748a2.js"><link rel="prefetch" href="/assets/js/70.387cff74.js"><link rel="prefetch" href="/assets/js/71.96765f9a.js"><link rel="prefetch" href="/assets/js/72.d078b13e.js"><link rel="prefetch" href="/assets/js/73.1b527ad7.js"><link rel="prefetch" href="/assets/js/74.aab74a2b.js"><link rel="prefetch" href="/assets/js/75.c3b8772d.js"><link rel="prefetch" href="/assets/js/76.b2337e48.js"><link rel="prefetch" href="/assets/js/77.2ddeadcc.js"><link rel="prefetch" href="/assets/js/78.58f5a4bd.js"><link rel="prefetch" href="/assets/js/79.d2915b24.js"><link rel="prefetch" href="/assets/js/8.42abcc83.js"><link rel="prefetch" href="/assets/js/80.3326f5ab.js"><link rel="prefetch" href="/assets/js/81.9edc96c8.js"><link rel="prefetch" href="/assets/js/82.2fa0fbab.js"><link rel="prefetch" href="/assets/js/83.f0eb0cc8.js"><link rel="prefetch" href="/assets/js/84.7858354a.js"><link rel="prefetch" href="/assets/js/85.4176cc9d.js"><link rel="prefetch" href="/assets/js/86.8aa6b18f.js"><link rel="prefetch" href="/assets/js/87.f0bebb4e.js"><link rel="prefetch" href="/assets/js/88.d74d5bac.js"><link rel="prefetch" href="/assets/js/89.63f2f7b2.js"><link rel="prefetch" href="/assets/js/9.5e7d4f9e.js"><link rel="prefetch" href="/assets/js/90.076eaea2.js"><link rel="prefetch" href="/assets/js/91.8f13fee6.js"><link rel="prefetch" href="/assets/js/92.38181e7b.js"><link rel="prefetch" href="/assets/js/93.5b7d6c4e.js"><link rel="prefetch" href="/assets/js/94.c29ad5bd.js"><link rel="prefetch" href="/assets/js/95.8198b8cb.js"><link rel="prefetch" href="/assets/js/96.d6cbe1d3.js"><link rel="prefetch" href="/assets/js/97.72af1449.js"><link rel="prefetch" href="/assets/js/98.f3d2c1ea.js"><link rel="prefetch" href="/assets/js/99.a9171fcf.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.9c5dedbe.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8d6b1986.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/vuepress-blog-logo.png" alt="忙 · 南易" class="logo"> <span class="site-name can-hide">忙 · 南易</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/node/" class="nav-link">node</a></div><div class="nav-item"><a href="/offer/" class="nav-link router-link-active">offer之道</a></div><div class="nav-item"><a href="/interviewQuestions/bytedance.html" class="nav-link">大厂真题</a></div> <a href="https://github.com/zhenquan321/node-ts-dome.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Git
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/node/" class="nav-link">node</a></div><div class="nav-item"><a href="/offer/" class="nav-link router-link-active">offer之道</a></div><div class="nav-item"><a href="/interviewQuestions/bytedance.html" class="nav-link">大厂真题</a></div> <a href="https://github.com/zhenquan321/node-ts-dome.git" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Git
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading"><span>前言</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/offer/" class="sidebar-link">声明·感谢：</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>面试技巧</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>推荐</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>前端基础</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>前端基础笔试</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>前端原理详解</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>计算机基础</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>数据结构与算法</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>前端框架</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>框架原理详解</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>框架实战技巧</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>工程化</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>工程化原理</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/offer/ast.html" class="sidebar-link">如何写一个babel</a></li><li><a href="/offer/WebpackHMR.html" class="sidebar-link">Webpack HMR 原理解析</a></li><li><a href="/offer/webpackPlugin.html" class="sidebar-link">webpack插件编写</a></li><li><a href="/offer/webpackPluginDesign.html" class="sidebar-link">webpack 插件化设计</a></li><li><a href="/offer/webpackMoudle.html" class="sidebar-link">Webpack 模块机制</a></li><li><a href="/offer/webpackLoader.html" class="active sidebar-link">webpack loader实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/offer/webpackLoader.html#什么是-loader-？" class="sidebar-link">什么是 Loader ？</a></li><li class="sidebar-sub-header"><a href="/offer/webpackLoader.html#loader-怎么用-？" class="sidebar-link">Loader 怎么用 ？</a></li><li class="sidebar-sub-header"><a href="/offer/webpackLoader.html#用正确的姿势开发-loader" class="sidebar-link">用正确的姿势开发 Loader</a></li><li class="sidebar-sub-header"><a href="/offer/webpackLoader.html#talk-is-cheep" class="sidebar-link">Talk is cheep</a></li><li class="sidebar-sub-header"><a href="/offer/webpackLoader.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/offer/babelPlugin.html" class="sidebar-link">如何开发Babel插件</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>安全</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content default"><h1 id="webpack-loader实现">webpack loader实现</h1> <p>本文来源于作者小 boy的<a href="https://juejin.im/post/5a698a316fb9a01c9f5b9ca0" target="_blank" rel="noopener noreferrer">手把手教你撸一个 Webpack Loader
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <hr> <p><img src="https://cdn.nlark.com/yuque/0/2019/webp/128853/1565282149966-8f2e13ca-f05d-41f0-83c0-638236cca017.webp#align=left&amp;display=inline&amp;height=420&amp;originHeight=420&amp;originWidth=1083&amp;size=0&amp;status=done&amp;width=1083" alt=""><br>经常逛 webpack 官网的同学应该会很眼熟上面的图。正如它宣传的一样，webpack 能把左侧各种类型的文件（webpack 把它们叫作「模块」）统一打包为右边被通用浏览器支持的文件。webpack 就像是魔术师的帽子，放进去一条丝巾，变出来一只白鸽。那这个「魔术」的过程是如何实现的呢？今天我们从 webpack 的核心概念之一 —— loader 来寻找答案，并着手实现这个「魔术」。看完本文，你可以：</p> <ul><li>知道 webpack loader 的作用和原理。</li> <li>自己开发贴合业务需求的 loader。
+<a name="Hh6x3"></a></li></ul> <h2 id="什么是-loader-？">什么是 Loader ？</h2> <p>在撸一个 loader 前，我们需要先知道它到底是什么。本质上来说，loader 就是一个 node 模块，这很符合 webpack 中「万物皆模块」的思路。既然是 node 模块，那就一定会导出点什么。在 webpack 的定义中，loader 导出一个函数，loader 会在转换源模块（resource）的时候调用该函数。在这个函数内部，我们可以通过传入 <code>this</code> 上下文给 Loader API 来使用它们。回顾一下头图左边的那些模块，他们就是所谓的源模块，会被 loader 转化为右边的通用文件，因此我们也可以概括一下 loader 的功能：把源模块转换成通用模块。
+<a name="LCht0"></a></p> <h2 id="loader-怎么用-？">Loader 怎么用 ？</h2> <p>知道它的强大功能以后，我们要怎么使用 loader 呢？
+<a name="llaIm"></a></p> <h3 id="_1-配置-webpack-config-文件">1. 配置 webpack config 文件</h3> <p>既然 loader 是 webpack 模块，如果我们要使其生效，肯定离不开配置。我这里收集了三种配置方法，任你挑选。
+<a name="UsvJV"></a></p> <h4 id="单个-loader-的配置">单个 loader 的配置</h4> <p>增加 <code>config.module.rules</code> 数组中的规则对象（rule object）。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let webpackConfig = {
+    //...
+    module: {
+        rules: [{
+            test: /\.js$/,
+            use: [{
+                //这里写 loader 的路径
+                loader: path.resolve(__dirname, 'loaders/a-loader.js'), 
+                options: {/* ... */}
+            }]
+        }]
+    }
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p><a name="3qnZM"></a></p> <h4 id="多个-loader-的配置">多个 loader 的配置</h4> <p>增加 <code>config.module.rules</code> 数组中的规则对象以及 <code>config.resolveLoader</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let webpackConfig = {
+    //...
+    module: {
+        rules: [{
+            test: /\.js$/,
+            use: [{
+                //这里写 loader 名即可
+                loader: 'a-loader', 
+                options: {/* ... */}
+            }, {
+                loader: 'b-loader', 
+                options: {/* ... */}
+            }]
+        }]
+    },
+    resolveLoader: {
+        // 告诉 webpack 该去那个目录下找 loader 模块
+        modules: ['node_modules', path.resolve(__dirname, 'loaders')]
+    }
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p><a name="XNyfo"></a></p> <h4 id="其他配置">其他配置</h4> <p>也可以通过 <code>npm link</code> 连接到你的项目里，这个方式类似 node CLI 工具开发，非 loader 模块专用，本文就不多讨论了。
+<a name="n8aUN"></a></p> <h3 id="_2-简单上手">2. 简单上手</h3> <p>配置完成后，当你在 webpack 项目中引入模块时，匹配到 rule （例如上面的 <code>/\.js$/</code>）就会启用对应的 loader (例如上面的 a-loader 和 b-loader)。这时，假设我们是 a-loader 的开发者，a-loader 会导出一个函数，这个函数接受的唯一参数是一个包含源文件内容的字符串。我们暂且称它为「source」。<br>接着我们在函数中处理 source 的转化，最终返回处理好的值。当然返回值的数量和返回方式依据 a-loader 的需求来定。一般情况下可以通过 <code>return</code> 返回一个值，也就是转化后的值。如果需要返回多个参数，则须调用 <code>this.callback(err, values...)</code> 来返回。在异步 loader 中你可以通过抛错来处理异常情况。Webpack 建议我们返回 1 至 2 个参数，第一个参数是转化后的 source，可以是 string 或 buffer。第二个参数可选，是用来当作 SourceMap 的对象。
+<a name="lOlnF"></a></p> <h3 id="_3-进阶使用">3. 进阶使用</h3> <p>通常我们处理一类源文件的时候，单一的 loader是不够用的（loader 的设计原则我们稍后讲到）。一般我们会将多个 loader 串联使用，类似工厂流水线，一个位置的工人（或机器）只干一种类型的活。既然是串联，那肯定有顺序的问题，webpack 规定 use 数组中 loader 的执行顺序是从最后一个到第一个，它们符合下面这些规则：</p> <ul><li>顺序最后的 loader 第一个被调用，它拿到的参数是 source 的内容</li> <li>顺序第一的 loader 最后被调用， webpack 期望它返回 JS 代码，source map 如前面所说是可选的返回值。</li> <li>夹在中间的 loader 被链式调用，他们拿到上个 loader 的返回值，为下一个 loader 提供输入。</li></ul> <p>我们举个例子：<br>webpack.config.js</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+        test: /\.js/,
+        use: [
+            'bar-loader',
+            'mid-loader',
+            'foo-loader'
+        ]
+    }
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>在上面的配置中：</p> <ul><li>loader 的调用顺序是 foo-loader -&gt; mid-loader -&gt; bar-loader。</li> <li>foo-loader 拿到 source，处理后把 JS 代码传递给 mid，mid 拿到 foo 处理过的 “source” ，再处理之后给 bar，bar 处理完后再交给  webpack。</li> <li>bar-loader 最终把返回值和 source map 传给 webpack。
+<a name="ZDhX0"></a></li></ul> <h2 id="用正确的姿势开发-loader">用正确的姿势开发 Loader</h2> <p>了解了基本模式后，我们先不急着开发。所谓磨刀不误砍柴工，我们先看看开发一个 loader 需要注意些什么，这样可以少走弯路，提高开发质量。下面是 webpack 提供的几点指南，它们按重要程度排序，注意其中有些点只适用特定情况。
+<a name="oi1DX"></a></p> <h3 id="_1-单一职责">1.单一职责</h3> <p>一个 loader 只做一件事，这样不仅可以让 loader 的维护变得简单，还能让 loader 以不同的串联方式组合出符合场景需求的搭配。
+<a name="qWWT4"></a></p> <h3 id="_2-链式组合">2.链式组合</h3> <p>这一点是第一点的延伸。好好利用 loader 的链式组合的特型，可以收获意想不到的效果。具体来说，写一个能一次干 5 件事情的 loader ，不如细分成 5 个只能干一件事情的 loader，也许其中几个能用在其他你暂时还没想到的场景。下面我们来举个例子。<br>假设现在我们要实现通过 loader 的配置和 query 参数来渲染模版的功能。我们在 “apply-loader” 里面实现这个功能，它负责编译源模版，最终输出一个导出 HTML 字符串的模块。根据链式组合的规则，我们可以结合另外两个开源 loader：</p> <ul><li><code>jade-loader</code> 把模版源文件转化为导出一个函数的模块。</li> <li><code>apply-loader</code> 把 loader options 传给上面的函数并执行，返回 HTML 文本。</li> <li><code>html-loader</code> 接收 HTMl 文本文件，转化为可被引用的 JS 模块。</li></ul> <blockquote><p>事实上串联组合中的 loader 并不一定要返回 JS 代码。只要下游的 loader 能有效处理上游 loader 的输出，那么上游的 loader 可以返回任意类型的模块。</p></blockquote> <p><a name="d8uab"></a></p> <h3 id="_3-模块化">3.模块化</h3> <p>保证 loader 是模块化的。loader 生成模块需要遵循和普通模块一样的设计原则。
+<a name="giy3F"></a></p> <h3 id="_4-无状态">4.无状态</h3> <p>在多次模块的转化之间，我们不应该在 loader 中保留状态。每个 loader 运行时应该确保与其他编译好的模块保持独立，同样也应该与前几个 loader 对相同模块的编译结果保持独立。
+<a name="ayGdN"></a></p> <h3 id="_5-使用-loader-实用工具">5.使用 Loader 实用工具</h3> <p>请好好利用 <code>loader-utils</code> 包，它提供了很多有用的工具，最常用的一个就是获取传入 loader 的 options。除了 <code>loader-utils</code> 之外包还有 <code>schema-utils</code> 包，我们可以用 <code>schema-utils</code> 提供的工具，获取用于校验 options 的 JSON Schema 常量，从而校验 loader options。下面给出的例子简要地结合了上面提到的两个工具包：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { getOptions } from 'loader-utils';
+import { validateOptions } from 'schema-utils';
+const schema = {
+  type: object,
+  properties: {
+    test: {
+      type: string
+    }
+  }
+}
+export default function(source) {
+    const options = getOptions(this);
+    validateOptions(schema, options, 'Example Loader');
+    // 在这里写转换 source 的逻辑 ...
+    return `export default ${ JSON.stringify(source) }`;
+};
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><a name="NtjkV"></a></p> <h3 id="loader-的依赖">loader 的依赖</h3> <p>如果我们在 loader 中用到了外部资源（也就是从文件系统中读取的资源），我们必须声明这些外部资源的信息。这些信息用于在监控模式（watch mode）下验证可缓存的 loder 以及重新编译。下面这个例子简要地说明了怎么使用 <code>addDependency</code> 方法来做到上面说的事情。
+loader.js：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import path from 'path';
+export default function(source) {
+    var callback = this.async();
+    var headerPath = path.resolve('header.js');
+    this.addDependency(headerPath);
+    fs.readFile(headerPath, 'utf-8', function(err, header) {
+        if(err) return callback(err);
+        //这里的 callback 相当于异步版的 return
+        callback(null, header + &quot;\n&quot; + source);
+    });
+};
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><a name="I49Ok"></a></p> <h3 id="模块依赖">模块依赖</h3> <p>不同的模块会以不同的形式指定依赖。比如在 CSS 中我们使用 <code>@import</code> 和 <code>url(...)</code> 声明来完成指定，而我们应该让模块系统解析这些依赖。<br>如何让模块系统解析不同声明方式的依赖呢？下面有两种方法：</p> <ul><li>把不同的依赖声明统一转化为 <code>require</code> 声明。</li> <li>通过 <code>this.resolve</code> 函数来解析路径。</li></ul> <p>对于第一种方式，有一个很好的例子就是 <code>css-loader</code>。它把 <code>@import</code> 声明转化为 <code>require</code> 样式表文件，把 <code>url(...)</code> 声明转化为 <code>require</code> 被引用文件。<br>而对于第二种方式，则需要参考一下 <code>less-loader</code>。由于要追踪 less 中的变量和 mixin，我们需要把所有的 <code>.less</code> 文件一次编译完毕，所以不能把每个 <code>@import</code> 转为 <code>require</code>。因此，<code>less-loader</code> 用自定义路径解析逻辑拓展了 less 编译器。这种方式运用了我们刚才提到的第二种方式 —— <code>this.resolve</code> 通过 webpack 来解析依赖。</p> <blockquote><p>如果某种语言只支持相对路径（例如 <code>url(file)</code> 指向 <code>./file</code>）。你可以用 <code>~</code> 将相对路径指向某个已经安装好的目录（例如 <code>node_modules</code>）下，因此，拿 <code>url</code> 举例，它看起来会变成这样：<code>url(~some-library/image.jpg)</code>。</p></blockquote> <p><a name="WdP0N"></a></p> <h3 id="代码公用">代码公用</h3> <p>避免在多个 loader 里面初始化同样的代码，请把这些共用代码提取到一个运行时文件里，然后通过 <code>require</code> 把它引进每个 loader。
+<a name="PQHnl"></a></p> <h3 id="绝对路径">绝对路径</h3> <p>不要在 loader 模块里写绝对路径，因为当项目根路径变了，这些路径会干扰 webpack 计算 hash（把 module 的路径转化为 module 的引用 id）。<code>loader-utils</code> 里有一个 <code>stringifyRequest</code> 方法，它可以把绝对路径转化为相对路径。
+<a name="tu4FY"></a></p> <h3 id="同伴依赖">同伴依赖</h3> <p>如果你开发的 loader 只是简单包装另外一个包，那么你应该在 package.json 中将这个包设为同伴依赖（peerDependency）。这可以让应用开发者知道该指定哪个具体的版本。
+举个例子，如下所示 <code>sass-loader</code> 将 <code>node-sass</code> 指定为同伴依赖：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;peerDependencies&quot;: {
+  &quot;node-sass&quot;: &quot;^4.0.0&quot;
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><a name="KSubv"></a></p> <h2 id="talk-is-cheep">Talk is cheep</h2> <p>以上我们已经为砍柴磨好了刀，接下来，我们动手开发一个 loader。<br>如果我们要在项目开发中引用模版文件，那么压缩 html 是十分常见的需求。分解以上需求，解析模版、压缩模版其实可以拆分给两给 loader 来做（单一职责），前者较为复杂，我们就引入开源包 <code>html-loader</code>，而后者，我们就拿来练手。首先，我们给它取个响亮的名字 —— <code>html-minify-loader</code>。<br>接下来，按照之前介绍的步骤，首先，我们应该配置 <code>webpack.config.js</code> ，让 webpack 能识别我们的 loader。当然，最最开始，我们要创建 loader 的 文件 —— <code>src/loaders/html-minify-loader.js</code>。<br>于是，我们在配置文件中这样处理：
+<code>webpack.config.js</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>module: {
+    rules: [{
+        test: /\.html$/,
+        use: ['html-loader', 'html-minify-loader'] // 处理顺序 html-minify-loader =&gt; html-loader =&gt; webpack
+    }]
+},
+resolveLoader: {
+    // 因为 html-loader 是开源 npm 包，所以这里要添加 'node_modules' 目录
+    modules: [path.join(__dirname, './src/loaders'), 'node_modules']
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>接下来，我们提供示例 html 和 js 来测试 loader：<br><code>src/example.html</code>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p><code>src/app.js</code>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var html = require('./expamle.html');
+console.log(html);
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>好了，现在我们着手处理 <code>src/loaders/html-minify-loader.js</code>。前面我们说过，loader 也是一个 node 模块，它导出一个函数，该函数的参数是 require 的源模块，处理 source 后把返回值交给下一个 loader。所以它的 “模版” 应该是这样的：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>module.exports = function (source) {
+    // 处理 source ...
+    return handledSource;
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>或</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>module.exports = function (source) {
+    // 处理 source ...
+    this.callback(null, handledSource)
+    return handledSource;
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><blockquote><p>注意：如果是处理顺序排在最后一个的 loader，那么它的返回值将最终交给 webpack 的 <code>require</code>，换句话说，它一定是一段可执行的 JS 脚本 （用字符串来存储），更准确来说，是一个 node 模块的 JS 脚本，我们来看下面的例子。</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 处理顺序排在最后的 loader
+module.exports = function (source) {
+    // 这个 loader 的功能是把源模块转化为字符串交给 require 的调用方
+    return 'module.exports = ' + JSON.stringify(source);
+}
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>整个过程相当于这个 loader 把源文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>这里是 source 模块
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>转化为</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// example.js
+module.exports = '这里是 source 模块';
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>然后交给 require 调用方：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// applySomeModule.js
+var source = require('example.js'); 
+console.log(source); // 这里是 source 模块
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>而我们本次串联的两个 loader 中，解析 html 、转化为 JS 执行脚本的任务已经交给 <code>html-loader</code> 了，我们来处理 html 压缩问题。<br>作为普通 node 模块的 loader 可以轻而易举地引用第三方库。我们使用 <code>minimize</code> 这个库来完成核心的压缩功能：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// src/loaders/html-minify-loader.js
+var Minimize = require('minimize');
+module.exports = function(source) {
+    var minimize = new Minimize();
+    return minimize.parse(source);
+};
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>当然， minimize 库支持一系列的压缩参数，比如 comments 参数指定是否需要保留注释。我们肯定不能在 loader 里写死这些配置。那么 <code>loader-utils</code> 就该发挥作用了：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// src/loaders/html-minify-loader.js
+var loaderUtils = require('loader-utils');
+var Minimize = require('minimize');
+module.exports = function(source) {
+    var options = loaderUtils.getOptions(this) || {}; //这里拿到 webpack.config.js 的 loader 配置
+    var minimize = new Minimize(options);
+    return minimize.parse(source);
+};
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>这样，我们可以在 webpack.config.js 中设置压缩后是否需要保留注释：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>module: {
+        rules: [{
+            test: /\.html$/,
+            use: ['html-loader', {
+                loader: 'html-minify-loader',
+                options: {
+                    comments: false
+                }
+            }] 
+        }]
+    },
+    resolveLoader: {
+        // 因为 html-loader 是开源 npm 包，所以这里要添加 'node_modules' 目录
+        modules: [path.join(__dirname, './src/loaders'), 'node_modules']
+    }
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>当然，你还可以把我们的 loader 写成异步的方式，这样不会阻塞其他编译进度：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var Minimize = require('minimize');
+var loaderUtils = require('loader-utils');
+module.exports = function(source) {
+    var callback = this.async();
+    if (this.cacheable) {
+        this.cacheable();
+    }
+    var opts = loaderUtils.getOptions(this) || {};
+    var minimize = new Minimize(opts);
+    minimize.parse(source, callback);
+};
+复制代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>你可以在<a href="https://link.juejin.im?target=https%3A%2F%2Fgithub.com%2Fikcamp%2FHow-to-write-a-loader-demo" target="_blank" rel="noopener noreferrer">这个仓库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>查看相关代码，<code>npm start</code> 以后可以去 <code>http://localhost:9000</code> 打开控制台查看 loader 处理后的内容。
+<a name="tCuQZ"></a></p> <h2 id="总结">总结</h2> <p>到这里，对于「如何开发一个 loader」，我相信你已经有了自己的答案。总结一下，一个 loader 在我们项目中 work 需要经历以下步骤：</p> <ul><li>创建 loader 的目录及模块文件</li> <li>在 webpack 中配置 rule 及 loader 的解析路径，并且要注意 loader 的顺序，这样在 <code>require</code> 指定类型文件时，我们能让处理流经过指定 laoder。</li> <li>遵循原则设计和开发 loader。</li></ul> <p>最后，Talk is cheep，赶紧动手撸一个 loader 耍耍吧～</p> <hr></div> <div class="page-edit"><div class="edit-link"><a href="https://github.com/zhenquan321/node-ts-dome.git/edit/master/src/offer/webpackLoader.md" target="_blank" rel="noopener noreferrer">Found a bug? Help me improve this page!</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/offer/webpackMoudle.html" class="prev">
+          Webpack 模块机制
+        </a></span> <span class="next"><a href="/offer/babelPlugin.html">
+          如何开发Babel插件
+        </a>
+        →
+      </span></p></div> </div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.32a39265.js" defer></script><script src="/assets/js/4.91c97ad6.js" defer></script><script src="/assets/js/125.758d01f4.js" defer></script>
+  </body>
+</html>
