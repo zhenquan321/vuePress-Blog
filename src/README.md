@@ -4,7 +4,7 @@ home: true
 heroText: 前端·积累·成长
 tagline: 路漫漫其修远兮，吾将上下而求索
 actionText: 开始 →
-heroImage: /vuepress-blog-logo.png
+heroImage: /logo.png
 actionLink: /offer/
 features:
 - 

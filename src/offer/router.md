@@ -94,7 +94,7 @@ class Routers {
 ![](https://user-gold-cdn.xitu.io/2018/4/7/1629f6b9cb508a43?w=599&h=61&f=gif&s=962261)
 
 完整示例<p data-height="300" data-theme-id="33015" data-slug-hash="KorqGx" data-default-tab="html" data-user="xiaomuzhu" data-embed-version="2" data-pen-title="KorqGx" class="codepen">点击这里 <a href="https://codepen.io/xiaomuzhu/pen/KorqGx/">hash router</a> by 寻找海蓝 (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 ## 2.增加回退功能
 
@@ -151,7 +151,7 @@ class Routers {
 我们看起来实现的不错,可是出现了Bug,在后退的时候我们往往需要点击两下。
 
 <p data-height="300" data-theme-id="33015" data-slug-hash="mxQBod" data-default-tab="js,result" data-user="xiaomuzhu" data-embed-version="2" data-pen-title="mxQBod" class="codepen">点击查看Bug示例 <a href="https://codepen.io/xiaomuzhu/pen/mxQBod/">hash router</a> by 寻找海蓝 (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 问题在于,我们每次在后退都会执行相应的callback,这会触发`refresh()`执行,因此每次我们后退,`history`中都会被`push`新的路由hash,`currentIndex`也会向前移动,这显然不是我们想要的。
 
@@ -226,7 +226,7 @@ class Routers {
 ```
 
 <p data-height="300" data-theme-id="33015" data-slug-hash="VXVrxa" data-default-tab="js,result" data-user="xiaomuzhu" data-embed-version="2" data-pen-title="VXVrxa" class="codepen">查看完整示例 <a href="https://codepen.io/xiaomuzhu/pen/VXVrxa/">Hash Router</a> by 寻找海蓝 (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 前进的部分就不实现了,思路我们已经讲得比较清楚了,可以看出来,hash路由这种方式确实有点繁琐,所以HTML5标准提供了History API供我们使用。
 
@@ -303,7 +303,7 @@ class Routers {
 ```
 
 <p data-height="300" data-theme-id="33015" data-slug-hash="QmJorQ" data-default-tab="js,result" data-user="xiaomuzhu" data-embed-version="2" data-pen-title="QmJorQ" class="codepen">点击查看H5路由 <a href="https://codepen.io/xiaomuzhu/pen/QmJorQ/">H5 Router</a> by 寻找海蓝 (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 ## 小结
 

@@ -1,4 +1,4 @@
-<!-- TOC -->
+TOC
 
 - [小程序-登录](#小程序-登录)
     - [unionid和openid](#unionid和openid)
@@ -1333,12 +1333,17 @@ export default {
 <template name="component$hash">
     <view class="my-component" bindtap="handleProxy">
         <view class="_h1">{{msg}}</view>
-        <template is="other-component$hash" wx:if="{{ $c[0] }}" data="{{ ...$c[0] }}"></template>
+        <template is="other-component$hash" wx:if="{{ data[0] }}" data="{{ data[0] }}"></template>
     </view>
 </template>
 ```
 
-可能已经注意到了 other-component(:msg="msg") 被转化成了 <template is="other-component$hash" data="{{ ...$c[0] }}"></template> 。mpvue 在运行时会从根组件开始把所有的组件实例数据合并成一个树形的数据，然后通过 setData 到 appData,`$c `是 $children 的缩写。至于那个 0 则是我们的 compiler 处理过后的一个标记，会为每一个子组件打一个特定的不重复的标记。 树形数据结构如下：
+可能已经注意到了 other-component(:msg="msg") 被转化成了 
+
+```html
+<template is="other-component$hash" data="{{ ...data[0] }}"></template>
+```
+。mpvue 在运行时会从根组件开始把所有的组件实例数据合并成一个树形的数据，然后通过 setData 到 appData,`data `是 $children 的缩写。至于那个 0 则是我们的 compiler 处理过后的一个标记，会为每一个子组件打一个特定的不重复的标记。 树形数据结构如下：
 
 ```js
 // 这儿数据结构是一个数组，index 是动态的

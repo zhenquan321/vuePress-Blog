@@ -26,7 +26,7 @@ module.exports = {
 			// { text: '随笔', link: '/blog/' },
 			// { text: '支持', link: '/support/' }
 		],
-		logo: '/vuepress-blog-logo.png',
+		logo: '/logo.png',
 		docsDir: 'src',
 		pageSize: 10,
 		startPage: 0,

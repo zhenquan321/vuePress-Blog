@@ -485,7 +485,7 @@ if (
 
 这个页面有很多有用的功能，很多的图表，需要安装一个来自 npm 的表单类库。因为我已经实现了打包代码分离，目测至少已经节省了100KB 的大小文件
 
-现在我设置了一份当用户访问呢/admin时渲染<AdminPage>的路由。当 Webpack 把一切都打包完毕之后，它会去查找import AdminPage from './AdminPage.js'，并且说“嘿，我需要把它包含到初始化的加载文件中”
+现在我设置了一份当用户访问呢/admin时渲染AdminPage的路由。当 Webpack 把一切都打包完毕之后，它会去查找import AdminPage from './AdminPage.js'，并且说“嘿，我需要把它包含到初始化的加载文件中”
 
 但是我们不想这么做，我们希望在动态加载中加载管理页面，比如import('./AdminPage.js')，这样 Webpack 就知道需要动态加载它。
 
@@ -495,7 +495,7 @@ if (
 
 核心思想非常简单，当组件加载时（也就意味着用户访问/admin时），我们动态的加载./AdminPage.js然后在组件 state 中保存对它的引用
 
-在渲染函数中，在等待<AdminPage>加载的过程中我们简单的渲染出<div>Loading...</div>，一旦加载成功则渲染出<AdminPage>
+在渲染函数中，在等待AdminPage加载的过程中我们简单的渲染出<div>Loading...</div>，一旦加载成功则渲染出AdminPage
 
 为了好玩我想自己实现它，但是在真实的世界里你只需要像React 关于代码分离的文档描述的那样使用 react-loadable即可
 

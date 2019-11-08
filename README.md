@@ -1,7 +1,8 @@
 ## 已完成的网站
 
-本项目网站：<a href=""a> https://a.lmongo.com/<a/>
-个人网站：http://lmongo.com/
+本项目网站：https://a.lmongo.com/
+
+个人网站：  http://lmongo.com/
 
 欢迎同学加入一起维护，如果喜欢，给个star吧~~
 
@@ -13,15 +14,19 @@
 ## 安装启动
 
 ```
-git clone
+git clone  https://github.com/zhenquan321/vuePress-Blog.git
 
-yarn
+yarn  或  npm install
 
-yarn dev
+yarn dev  或  npm run dev
+
+yarn build  或  npm  run  build
 ```
+
 
 默认端口 [http://localhost:8080](http://localhost:8080)!
 
 ## 官方文档
 
 [the guide](https://vuepress-blog-boilerplate.bencodezen.io/).
+

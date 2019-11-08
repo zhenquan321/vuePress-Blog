@@ -1,7 +1,5 @@
 # CSS基础
 
-
-
 * [CSS选择器的优先级是怎样的？✨](#css选择器的优先级是怎样的？✨)
 * [link和@import的区别？](#link和@import的区别？)
 * [有哪些方式（CSS）可以隐藏页面元素？](#有哪些方式（CSS）可以隐藏页面元素？)
@@ -143,7 +141,7 @@ table方法
   bPVNxj</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 ## 如何理解z-index？✨
 
@@ -172,7 +170,7 @@ CSS 中的z-index属性控制重叠元素的垂直叠加顺序，默认元素的
   xowqjG</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 ## 如何理解层叠上下文？✨
 
@@ -297,7 +295,7 @@ box-sizing: padding-box // 火狐的私有模型，没人用
   LKpyzz</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 > 拓展阅读：[深入理解盒模型](https://www.cnblogs.com/xiaohuochai/p/5202597.html)
 
@@ -334,7 +332,7 @@ BFC触发条件:
   NZGjYQ</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 #### 两栏布局，防止文字环绕等
 
@@ -343,7 +341,7 @@ BFC触发条件:
   XLmRPM</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 #### 防止元素塌陷
 
@@ -352,7 +350,7 @@ BFC触发条件:
   VJvbEd</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 > 拓展阅读：[深入理解BFC](https://www.cnblogs.com/xiaohuochai/p/5248536.html)
 
@@ -383,7 +381,7 @@ translate()是transform的一个值。改变transform或opacity不会触发浏�
   qzOXxO</a> by Iwobi (<a href="https://codepen.io/xiaomuzhu">@xiaomuzhu</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<!-- <script async src="https://static.codepen.io/assets/embed/ei.js"></script> -->
 
 > 拓展阅读：[伪类与伪元素](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)
 
