@@ -82,18 +82,8 @@ module.exports = {
 	head: [
 		['link', {
 			rel: 'apple-touch-icon',
-			sizes: '180x180',
-			href: '/apple-icon.png'
-		}],
-		['link', {
-			rel: 'icon',
-			sizes: '32x32',
-			href: '/favicon-32x32.png'
-		}],
-		['link', {
-			rel: 'icon',
-			sizes: '16x16',
-			href: '/favicon-16x16.png'
+			sizes: '128x128',
+			href: '/favicon_128.ico'
 		}],
 		['link', {
 			rel: 'manifest',
