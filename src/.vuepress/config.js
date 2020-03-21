@@ -5,7 +5,7 @@ module.exports = {
 	title: '忙 · 南易',
 	dest: './docs',
 	themeConfig: {
-		repo: 'https://github.com/zhenquan321/node-ts-dome.git',
+		repo: 'https://github.com/zhenquan321',
 		repoLabel: 'Git',
 		editLinks: true,
 		editLinkText: 'Found a bug? Help me improve this page!',
