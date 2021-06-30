@@ -2,7 +2,7 @@
 
 本项目网站：https://a.lmongo.com/
 
-个人网站：  http://lmongo.com/
+个人网站：  https://fengzq.cn
 
 欢迎同学加入一起维护，如果喜欢，给个star吧~~
 
