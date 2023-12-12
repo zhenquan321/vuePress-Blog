@@ -1,6 +1,6 @@
 ## 已完成的网站
 
-本项目网站：https://a.lmongo.com/
+本项目网站：https://fengzq.cn/docs/
 
 个人网站：  https://fengzq.cn
 
