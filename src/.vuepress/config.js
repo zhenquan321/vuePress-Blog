@@ -1,7 +1,7 @@
 const currentDateUTC = new Date().toUTCString()
 
 module.exports = {
-	// base:"/lmongo/",
+	base:"/docs/",
 	title: '忙 · 南易',
 	dest: './docs',
 	themeConfig: {
